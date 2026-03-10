@@ -95,10 +95,10 @@ export default function Hero() {
               <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 'clamp(44px, 5.5vw, 82px)', lineHeight: 0.92, letterSpacing: '-2px', color: '#F5F5F5' }}>NELLUTLA</div>
             </div>
 
-            {/* Photo bubbles — right below name */}
-            <div className={shown ? 'slide-up delay-2' : ''} style={{ opacity: shown ? 1 : 0, display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28 }}>
-              <PhotoBubbles size={48} gap={8} />
-              <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 11, color: '#333' }}>— that&apos;s me</span>
+            {/* Photo bubbles carousel — below name */}
+            <div className={shown ? 'slide-up delay-2' : ''} style={{ opacity: shown ? 1 : 0, display: 'flex', alignItems: 'center', gap: 8, marginBottom: 24 }}>
+              <PhotoBubbles size={36} gap={4} visible={4} startIndex={0} />
+              <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 10, color: '#2a2a2a' }}>— that&apos;s me</span>
             </div>
 
             <div className={shown ? 'slide-up delay-2' : ''} style={{ opacity: shown ? 1 : 0, display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 24 }}>

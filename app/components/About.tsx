@@ -109,7 +109,7 @@ export default function About() {
 
             {/* Photo bubbles */}
             <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32, padding: '12px 16px', background: '#111', border: '1px solid #1a1a1a', borderRadius: 4 }}>
-              <PhotoBubbles size={44} gap={8} />
+              <PhotoBubbles size={44} gap={8} visible={4} startIndex={3} />
               <div>
                 <div style={{ fontFamily: 'DM Mono, monospace', fontSize: 11, color: '#555', marginBottom: 2 }}>// photos</div>
                 <div style={{ fontFamily: 'DM Mono, monospace', fontSize: 11, color: '#333' }}>FBLA Nationals · Las Vegas Sphere · Mini Grand Prix</div>

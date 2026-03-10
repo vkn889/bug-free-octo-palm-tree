@@ -1,10 +1,13 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-const photos = [
+const ALL_PHOTOS = [
   { src: '/photo1.png', label: 'FBLA Nationals' },
+  { src: '/photo4.png', label: 'FBLA National Champion' },
+  { src: '/photo5.png', label: 'FBLA Nationals Win' },
+  { src: '/photo6.png', label: 'ML Research Poster' },
   { src: '/photo2.png', label: 'Las Vegas Sphere' },
   { src: '/photo3.png', label: 'Mini Grand Prix' },
 ];
@@ -12,56 +15,61 @@ const photos = [
 interface PhotoBubblesProps {
   size?: number;
   gap?: number;
-  inline?: boolean; // true = row of bubbles, false = floating stacked
+  visible?: number;
+  startIndex?: number;
 }
 
-export default function PhotoBubbles({ size = 52, gap = 10, inline = true }: PhotoBubblesProps) {
-  const [active, setActive] = useState<number | null>(null);
-  const [current, setCurrent] = useState(0);
+export default function PhotoBubbles({ size = 48, gap = 8, visible = 4, startIndex = 0 }: PhotoBubblesProps) {
+  const [offset, setOffset] = useState(startIndex % ALL_PHOTOS.length);
+  const [hovered, setHovered] = useState<number | null>(null);
 
-  // Auto-cycle highlight
   useEffect(() => {
-    if (inline) return;
-    const t = setInterval(() => setCurrent(i => (i + 1) % photos.length), 2400);
+    const t = setInterval(() => {
+      setOffset(o => (o + 1) % ALL_PHOTOS.length);
+    }, 2500);
     return () => clearInterval(t);
-  }, [inline]);
+  }, []);
+
+  const visiblePhotos = Array.from({ length: visible }, (_, i) => {
+    const idx = (offset + i) % ALL_PHOTOS.length;
+    return { ...ALL_PHOTOS[idx], key: `${idx}-${i}` };
+  });
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap, flexShrink: 0 }}>
-      {photos.map((p, i) => {
-        const isHovered = active === i;
-        const isCurrent = current === i;
+      {visiblePhotos.map((p, i) => {
+        const isHovered = hovered === i;
         return (
           <div
-            key={p.src}
+            key={p.key}
             data-hover
-            onMouseEnter={() => setActive(i)}
-            onMouseLeave={() => setActive(null)}
+            onMouseEnter={() => setHovered(i)}
+            onMouseLeave={() => setHovered(null)}
             style={{
               position: 'relative',
               width: size,
               height: size,
               borderRadius: '50%',
-              overflow: 'visible',
               flexShrink: 0,
               cursor: 'pointer',
               transition: 'transform 0.25s ease',
-              transform: isHovered ? 'scale(1.15) translateY(-3px)' : 'scale(1)',
-              zIndex: isHovered ? 10 : 1,
+              transform: isHovered ? 'scale(1.18) translateY(-4px)' : 'scale(1)',
+              zIndex: isHovered ? 10 : visible - i,
+              marginLeft: i > 0 ? -(size * 0.18) : 0,
             }}
           >
-            {/* Glow ring */}
             <div style={{
               position: 'absolute',
               inset: -2,
               borderRadius: '50%',
-              border: `2px solid ${isHovered || isCurrent ? '#2D6BFF' : 'rgba(255,255,255,0.08)'}`,
-              transition: 'border-color 0.25s',
+              border: `2px solid ${isHovered ? '#2D6BFF' : 'rgba(255,255,255,0.07)'}`,
+              boxShadow: isHovered ? '0 0 14px rgba(45,107,255,0.4)' : 'none',
+              transition: 'border-color 0.25s, box-shadow 0.25s',
               zIndex: 2,
               pointerEvents: 'none',
             }} />
-            {/* Image */}
-            <div style={{ width: size, height: size, borderRadius: '50%', overflow: 'hidden', position: 'relative' }}>
+
+            <div style={{ width: size, height: size, borderRadius: '50%', overflow: 'hidden', position: 'relative', background: '#111' }}>
               <Image
                 src={p.src}
                 alt={p.label}
@@ -70,23 +78,23 @@ export default function PhotoBubbles({ size = 52, gap = 10, inline = true }: Pho
                 style={{ objectFit: 'cover', objectPosition: 'center top' }}
               />
             </div>
-            {/* Tooltip */}
+
             {isHovered && (
               <div style={{
                 position: 'absolute',
-                bottom: size + 8,
+                bottom: size + 10,
                 left: '50%',
                 transform: 'translateX(-50%)',
-                background: '#111',
+                background: '#0D0D0D',
                 border: '1px solid #222',
                 borderRadius: 3,
-                padding: '4px 10px',
+                padding: '5px 10px',
                 fontFamily: 'DM Mono, monospace',
                 fontSize: 10,
                 color: '#888',
                 whiteSpace: 'nowrap',
                 pointerEvents: 'none',
-                zIndex: 20,
+                zIndex: 30,
               }}>
                 {p.label}
               </div>
@@ -94,6 +102,23 @@ export default function PhotoBubbles({ size = 52, gap = 10, inline = true }: Pho
           </div>
         );
       })}
+
+      {/* Dot indicators */}
+      <div style={{ display: 'flex', gap: 4, marginLeft: 4 }}>
+        {ALL_PHOTOS.map((_, i) => (
+          <div
+            key={i}
+            onClick={() => setOffset(i)}
+            data-hover
+            style={{
+              width: 4, height: 4, borderRadius: '50%',
+              background: i === offset % ALL_PHOTOS.length ? '#2D6BFF' : '#222',
+              transition: 'background 0.3s',
+              cursor: 'pointer',
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 }
