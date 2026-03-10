@@ -84,6 +84,8 @@ export default function VSCodeShell({ children }: { children: React.ReactNode })
           <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#FEBC2E' }} />
           <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#28C840' }} />
         </div>
+        {/* VKN Logo */}
+        <img src="/logo-white.svg" alt="VKN" style={{ height: 18, width: 18, opacity: 0.7, flexShrink: 0, marginLeft: 4 }} />
         {/* Mobile: hamburger nav */}
         {isMobile ? (
           <>

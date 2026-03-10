@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "Viraat Krishna Nellutla — Developer · Researcher · Builder",
   description: "Portfolio of Viraat Krishna Nellutla — building at the intersection of technology, medicine, and human impact.",
   keywords: ["Viraat Nellutla", "developer", "portfolio", "AI", "machine learning", "iOS", "full-stack"],
+  icons: {
+    icon: '/logo-white.svg',
+    shortcut: '/logo-white.svg',
+  },
 };
 
 export default function RootLayout({
