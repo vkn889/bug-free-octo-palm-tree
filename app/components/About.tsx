@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import PhotoBubbles from './PhotoBubbles';
 
 const stats = [
-  { num: '3+', label: 'CNNs Trained', color: '#2D6BFF' },
+  { num: '3+', label: 'ML Models Built', color: '#2D6BFF' },
   { num: '2×', label: 'FBLA Nationals', color: '#4ADE80' },
   { num: '10+', label: 'Businesses Served', color: '#FB923C' },
   { num: '5+', label: 'Years Building', color: '#A78BFA' },
@@ -97,14 +98,23 @@ export default function About() {
               I&apos;m <span style={{ color: '#F5F5F5' }}>Viraat Krishna Nellutla</span> — a junior at North Creek High School building at the intersection of technology, medicine, and human impact.
             </p>
             <p className="reveal" style={{ fontFamily: 'DM Mono, monospace', fontSize: 13, lineHeight: 1.9, color: '#666', marginBottom: 20 }}>
-              My technical roots are in HTML, CSS, JavaScript, and Java — grown into full-stack development, machine learning, and AI research. I&apos;ve trained <span style={{ color: '#F5F5F5' }}>CNNs on CIFAR-10 and CIFAR-100</span>, explored NLP and object classification, and my next target is a <span style={{ color: '#2D6BFF' }}>low-cost AI model to detect breast cancer globally</span>.
+              My technical roots are in HTML, CSS, JavaScript, and Java — grown into full-stack development, machine learning, and AI research. My current research focuses on building an <span style={{ color: '#F5F5F5' }}>integrated ML pipeline for early classification of diabetes</span> through non-invasive biomarkers — training, benchmarking, and comparing models, then deploying them into real hardware using <span style={{ color: '#2D6BFF' }}>Raspberry Pi and Arduino</span> to make diagnostics accessible without clinical infrastructure.
             </p>
             <p className="reveal" style={{ fontFamily: 'DM Mono, monospace', fontSize: 13, lineHeight: 1.9, color: '#666', marginBottom: 20 }}>
               Beyond the code: I direct short films, produce motion graphics, and create commercials for local businesses.
             </p>
-            <p className="reveal" style={{ fontFamily: 'DM Mono, monospace', fontSize: 13, lineHeight: 1.9, color: '#F5F5F5', marginBottom: 40, borderLeft: '2px solid #2D6BFF', paddingLeft: 16 }}>
+            <p className="reveal" style={{ fontFamily: 'DM Mono, monospace', fontSize: 13, lineHeight: 1.9, color: '#F5F5F5', marginBottom: 24, borderLeft: '2px solid #2D6BFF', paddingLeft: 16 }}>
               I lead. I compete. I build things that don&apos;t stay theoretical. The throughline: <span style={{ color: '#2D6BFF' }}>make something that matters.</span>
             </p>
+
+            {/* Photo bubbles */}
+            <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32, padding: '12px 16px', background: '#111', border: '1px solid #1a1a1a', borderRadius: 4 }}>
+              <PhotoBubbles size={44} gap={8} />
+              <div>
+                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: 11, color: '#555', marginBottom: 2 }}>// photos</div>
+                <div style={{ fontFamily: 'DM Mono, monospace', fontSize: 11, color: '#333' }}>FBLA Nationals · Las Vegas Sphere · Mini Grand Prix</div>
+              </div>
+            </div>
 
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
               {stats.map(s => (
