@@ -64,9 +64,10 @@ export default function Achievements() {
     <section
       id="achievements"
       ref={sectionRef}
+      className="section-pad"
       style={{ padding: '80px 0', borderTop: '1px solid #1a1a1a' }}
     >
-      <div style={{ padding: '0 32px' }}>
+      <div className="inner-pad" style={{ padding: '0 32px' }}>
 
         {/* Section label */}
         <div className="reveal" style={{ fontFamily: 'DM Mono, monospace', fontSize: 13, color: '#444', fontStyle: 'italic', marginBottom: 32, lineHeight: 2 }}>

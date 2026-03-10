@@ -35,8 +35,8 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" ref={sectionRef} style={{ padding: '80px 0 40px', borderTop: '1px solid #1a1a1a' }}>
-      <div style={{ padding: '0 32px' }}>
+    <section id="contact" ref={sectionRef} className="section-pad" style={{ padding: '80px 0 40px', borderTop: '1px solid #1a1a1a' }}>
+      <div className="inner-pad" style={{ padding: '0 32px' }}>
 
         <div className="reveal" style={{ fontFamily: 'DM Mono, monospace', fontSize: 13, color: '#444', fontStyle: 'italic', marginBottom: 32, lineHeight: 2 }}>
           <div style={{ display: 'flex' }}>

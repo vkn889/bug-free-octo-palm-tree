@@ -63,8 +63,8 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <section id="portfolio" ref={sectionRef} style={{ padding: '80px 0', borderTop: '1px solid #1a1a1a' }}>
-      <div style={{ padding: '0 32px' }}>
+    <section id="portfolio" ref={sectionRef} className="section-pad" style={{ padding: '80px 0', borderTop: '1px solid #1a1a1a' }}>
+      <div className="inner-pad" style={{ padding: '0 32px' }}>
 
         <div className="reveal" style={{ fontFamily: 'DM Mono, monospace', fontSize: 13, color: '#444', fontStyle: 'italic', marginBottom: 32, lineHeight: 2 }}>
           <div style={{ display: 'flex' }}>
@@ -93,14 +93,14 @@ export default function Portfolio() {
                 onKeyDown={e => e.key === 'Enter' && setExpanded(expanded === i ? null : i)}
                 aria-expanded={expanded === i}
               >
-                <div style={{ padding: '24px 0', display: 'flex', alignItems: 'center', gap: 24, position: 'relative', zIndex: 1 }}>
+                <div className="portfolio-row-inner" style={{ padding: '24px 0', display: 'flex', alignItems: 'center', gap: 24, position: 'relative', zIndex: 1 }}>
                   <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 12, color: expanded === i ? '#2D6BFF' : '#2a2a2a', minWidth: 28, transition: 'color 0.2s', flexShrink: 0 }}>{p.num}</span>
                   <span style={{ fontFamily: 'DM Mono, monospace', fontSize: 13, color: '#2D6BFF', opacity: expanded === i ? 1 : 0, transform: expanded === i ? 'translateX(0)' : 'translateX(-8px)', transition: 'opacity 0.2s, transform 0.2s', flexShrink: 0 }}>→</span>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 'clamp(16px, 2vw, 24px)', color: '#F5F5F5', marginBottom: 4 }}>{p.name}</div>
                     <div style={{ fontFamily: 'DM Mono, monospace', fontSize: 12, color: '#444' }}>{p.desc}</div>
                   </div>
-                  <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end', flexShrink: 0 }}>
+                  <div className="portfolio-tags" style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end', flexShrink: 0 }}>
                     {p.tags.map((t, ti) => (
                       <span key={t} style={{
                         fontFamily: 'DM Mono, monospace', fontSize: 10, padding: '2px 8px',
@@ -115,7 +115,7 @@ export default function Portfolio() {
               </div>
 
               <div style={{ overflow: 'hidden', maxHeight: expanded === i ? '300px' : '0', transition: 'max-height 0.4s ease' }}>
-                <div style={{ padding: '0 0 32px 52px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+                <div className="expand-inner" style={{ padding: '0 0 32px 52px', display: 'flex', flexDirection: 'column', gap: 16 }}>
                   <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 13, color: '#666', lineHeight: 1.85 }}>{p.detail}</p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                     {p.stack.map(s => (

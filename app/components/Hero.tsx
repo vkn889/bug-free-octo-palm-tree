@@ -56,8 +56,8 @@ export default function Hero() {
   ];
 
   return (
-    <section id="home" style={{ padding: '60px 0 80px', position: 'relative' }}>
-      <div style={{ padding: '0 32px 28px' }}>
+    <section id="home" className="section-pad" style={{ padding: '60px 0 80px', position: 'relative' }}>
+      <div className="inner-pad" style={{ padding: '0 32px 28px' }}>
         <div style={{ fontFamily: 'DM Mono, monospace', fontSize: 13, color: '#444', fontStyle: 'italic', lineHeight: 2 }}>
           <div style={{ display: 'flex', alignItems: 'baseline' }}>
             <span style={{ width: 40, color: '#2a2a2a', textAlign: 'right', marginRight: 24, fontSize: 12, userSelect: 'none', flexShrink: 0 }}>1</span>
@@ -70,7 +70,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div style={{ padding: '0 32px' }}>
+      <div className="inner-pad" style={{ padding: '0 32px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'start' }} className="hero-grid">
           <div>
             <div style={{
@@ -175,7 +175,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className={shown ? 'slide-up delay-2' : ''} style={{ opacity: shown ? 1 : 0 }}>
+          <div className={`hero-ide${shown ? ' slide-up delay-2' : ''}`} style={{ opacity: shown ? 1 : 0 }}>
             <div className="ide-window glow-pulse" style={{ position: 'relative', overflow: 'hidden' }}>
               <div className="ide-titlebar">
                 <div className="ide-dot ide-dot-red" />

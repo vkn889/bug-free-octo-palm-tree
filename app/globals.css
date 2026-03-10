@@ -256,6 +256,55 @@ body {
   outline-offset: 2px;
 }
 
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+
+/* Tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+  .hero-grid   { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .about-grid  { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .achievements-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+  .code-line   { font-size: 12px !important; }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  /* Hide VS Code chrome elements */
+  .vsc-menu-bar   { display: none !important; }
+  .vsc-activity   { display: none !important; }
+  .vsc-sidebar    { display: none !important; }
+  .vsc-breadcrumb { display: none !important; }
+  .vsc-line-nums  { display: none !important; }
+  .vsc-title-center { display: none !important; }
+  .vsc-content-pad { padding-left: 0 !important; }
+
+  /* Section padding */
+  .section-pad { padding: 48px 0 !important; }
+  .inner-pad   { padding: 0 16px !important; }
+
+  /* Grids → single column */
+  .hero-grid        { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .about-grid       { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .contact-grid     { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .achievements-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .stats-grid       { grid-template-columns: repeat(2, 1fr) !important; }
+  .expand-inner     { padding-left: 16px !important; }
+
+  /* IDE window — hide on mobile to save space */
+  .hero-ide         { display: none !important; }
+
+  /* Portfolio rows tighten */
+  .portfolio-row-inner { gap: 12px !important; padding: 16px 0 !important; }
+  .portfolio-tags  { display: none !important; }
+}
+
+/* Small mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .achievements-grid { grid-template-columns: 1fr !important; }
+  .stats-grid        { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ─── Reduced motion ────────────────────────────────── */
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

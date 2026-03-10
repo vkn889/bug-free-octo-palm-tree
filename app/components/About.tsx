@@ -32,8 +32,8 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} style={{ padding: '80px 0', borderTop: '1px solid #1a1a1a' }}>
-      <div style={{ padding: '0 32px' }}>
+    <section id="about" ref={sectionRef} className="section-pad" style={{ padding: '80px 0', borderTop: '1px solid #1a1a1a' }}>
+      <div className="inner-pad" style={{ padding: '0 32px' }}>
 
         {/* Code comment */}
         <div className="reveal" style={{ fontFamily: 'DM Mono, monospace', fontSize: 13, color: '#444', fontStyle: 'italic', marginBottom: 32, lineHeight: 2 }}>
@@ -116,7 +116,7 @@ export default function About() {
               </div>
             </div>
 
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
+            <div className="reveal stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
               {stats.map(s => (
                 <div key={s.label} className="stat-tile" style={{ padding: '16px', borderTop: `2px solid ${s.color}` }}>
                   <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 32, color: s.color, marginBottom: 4 }}>{s.num}</div>
